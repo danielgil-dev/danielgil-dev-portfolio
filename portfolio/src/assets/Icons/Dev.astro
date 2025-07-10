@@ -1,0 +1,34 @@
+---
+export interface Props {
+  size?: string;
+  darkMode?: boolean;
+  hoverEffect?: boolean;
+}
+
+const { 
+  size = "text-xl", 
+  darkMode = false,
+  hoverEffect = true 
+} = Astro.props;
+---
+
+<div class={`inline-flex items-center font-mono font-bold cursor-pointer whitespace-nowrap transition-transform duration-300 ${hoverEffect ? 'hover:scale-105' : ''} ${size}`}>
+  <span class={`text-yellow-300 transition-colors duration-300 ${hoverEffect ? 'group-hover:text-green-600' : ''}`}>&lt;</span>
+  <span class={`relative mx-1 transition-all duration-300 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+    DanielDev
+    <span class={`absolute left-0 bottom-0 h-0.5 bg-green-600 w-0 transition-all duration-300 ${hoverEffect ? 'group-hover:w-full' : ''}`}></span>
+  </span>
+  <span class={`text-yellow-300 transition-colors duration-300 ${hoverEffect ? 'group-hover:text-green-600' : ''}`}>/&gt;</span>
+  <span class={`cursor-animation ml-0.5 opacity-0 ${hoverEffect ? 'group-hover:opacity-100' : ''}`}>_</span>
+</div>
+
+<style>
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  .cursor-animation {
+    animation: blink 1s infinite;
+  }
+</style>
