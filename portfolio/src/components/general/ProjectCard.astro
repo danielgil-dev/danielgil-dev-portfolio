@@ -1,0 +1,64 @@
+---
+import Image from "astro/components/Image.astro";
+import Neo from "../../assets/images/NeoAvatar.png";
+import GitHubIcon from "../../assets/Icons/GitHubIcon.astro";
+import LinkIcon from "../../assets/Icons/LinkIcon.astro";
+import AngularIcon from "../../assets/Icons/AngularIcon.astro";
+import SpringBootIcon from "../../assets/Icons/SpringBootIcon.astro";
+
+interface Props {
+  link: string;
+  nombre: string;
+  description: string;
+  tags: string;
+  gitHub: string;
+}
+const { nombre, description, link, tags, gitHub } = Astro.props;
+---
+
+<div
+  class="max-w-md bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
+>
+  <a href="#">
+    <Image class="rounded-t-lg w-150 h-100 text-center" src={Neo} alt="" />
+  </a>
+  <div class="p-5 flex-row">
+    <h5
+      class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+    >
+      {nombre}
+    </h5>
+    <div class="flex flex-row  gap-1.5 ">
+      <span
+        class="flex bg-blue-100 text-md font-light my-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300 justify-start gap-1 items-center w-auto"
+      >
+        <AngularIcon class:list={"size-5"} />
+        <p>Angular</p>
+      </span>
+      <span
+        class="flex bg-blue-100 text-md font-light my-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300 justify-start gap-1 items-center w-auto"
+      >
+        <SpringBootIcon class:list={"size-5"} />
+        <p >SpringBoot</p>
+      </span>
+     
+    
+    </div>
+
+    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+      {description}
+    </p>
+    <div class="flex justify-self-end">
+      <a
+        href={gitHub}
+        class="bg-blue-100 hover:bg-blue-200 text-blue-800 text-xs font-semibold m-1 p-1 rounded-sm dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center w-20"
+        ><GitHubIcon class:list={"size-5"} /></a
+      >
+      <a
+        href="#"
+        class="bg-blue-100 hover:bg-blue-200 text-blue-800 text-sm font-medium m-1 p-1 rounded-sm dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center w-20"
+        ><LinkIcon class:list={"size-5 "} /></a
+      >
+    </div>
+  </div>
+</div>
