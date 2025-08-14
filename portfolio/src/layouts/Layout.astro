@@ -1,0 +1,59 @@
+---
+// En Layout.astro (crea este archivo si no lo tienes)
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 text-gray-50 font-inter">
+    <slot />
+    
+    <!-- Script para destacar la sección activa en la navegación -->
+    <script>
+      // Script para la navegación y secciones activas
+      document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a');
+        
+        function highlightNavigation() {
+          let scrollY = window.scrollY;
+          
+          sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if(scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+              navLinks.forEach(link => {
+                link.classList.remove('nav-active');
+                if(link.getAttribute('href') === `#${sectionId}`) {
+                  link.classList.add('nav-active');
+                }
+              });
+            }
+          });
+        }
+        
+        window.addEventListener('scroll', highlightNavigation);
+        highlightNavigation();
+      });
+    </script>
+  </body>
+</html>

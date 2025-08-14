@@ -1,0 +1,29 @@
+---
+
+---
+<h1 class="text-5xl font-extrabold py-2 m-2 text-center text-white">Contacto</h1>
+<form class="max-w-2xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700">
+  <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Mandame un mensaje!</h3>
+  
+  <div class="grid grid-cols-1 gap-4 mb-4">
+    <div>
+      <label for="name-input" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Name:</label>
+      <input type="text" id="name-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500" placeholder="Your name">
+    </div>
+    <div>
+      <label for="email-input" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Email:</label>
+      <input type="email" id="email-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500" placeholder="your@email.com">
+    </div>
+  </div>
+  
+  <div class="relative">
+    <textarea id="chat" rows="4" class="block w-full p-3 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-teal-500 focus:border-teal-500 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500 resize-none" placeholder="Your message..."></textarea>
+    <button type="submit" class="absolute bottom-3 right-3 inline-flex justify-center p-2 text-white bg-teal-600 rounded-full cursor-pointer hover:bg-teal-500 shadow-md dark:bg-teal-600 dark:hover:bg-teal-500">
+      <svg class="w-5 h-5 rotate-90 rtl:-rotate-90" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+        <path d="m17.914 18.594-8-18a1 1 0 0 0-1.828 0l-8 18a1 1 0 0 0 1.157 1.376L8 18.281V9a1 1 0 0 1 2 0v9.281l6.758 1.689a1 1 0 0 0 1.156-1.376Z"/>
+      </svg>
+      <span class="sr-only">Send message</span>
+    </button>
+  </div>
+</form>
+

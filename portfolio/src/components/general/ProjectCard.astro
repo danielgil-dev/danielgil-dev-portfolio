@@ -10,10 +10,29 @@ interface Props {
   link: string;
   nombre: string;
   description: string;
-  tags: string;
   gitHub: string;
+  tecnologies: string [];
 }
-const { nombre, description, link, tags, gitHub } = Astro.props;
+
+const TAGS = {
+    Angular: {
+        nombre: "Angular",
+        icon: AngularIcon
+    },
+    SpringBoot: {
+        nombre: "SpringBoot",
+        icon: SpringBootIcon
+    }
+}
+const PROJECTS = [
+    {
+      titulo: "Ecolink",
+      description: "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has" ,
+      tags: [TAGS.Angular,TAGS.SpringBoot]  
+    }
+]
+const { nombre, description, link, gitHub} = Astro.props;
+
 ---
 
 <div
@@ -23,31 +42,31 @@ const { nombre, description, link, tags, gitHub } = Astro.props;
     <Image class="rounded-t-lg w-150 h-100 text-center" src={Neo} alt="" />
   </a>
   <div class="p-5 flex-row">
-    <h5
-      class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-    >
-      {nombre}
-    </h5>
-    <div class="flex flex-row  gap-1.5 ">
-      <span
-        class="flex bg-blue-100 text-md font-light my-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300 justify-start gap-1 items-center w-auto"
-      >
-        <AngularIcon class:list={"size-5"} />
-        <p>Angular</p>
-      </span>
-      <span
-        class="flex bg-blue-100 text-md font-light my-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300 justify-start gap-1 items-center w-auto"
-      >
-        <SpringBootIcon class:list={"size-5"} />
-        <p >SpringBoot</p>
-      </span>
-     
-    
-    </div>
-
-    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-      {description}
-    </p>
+      {
+          PROJECTS.map(project => {
+            return (
+        <h5
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >{project.titulo}
+        </h5>
+          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            {project.description}
+          </p>
+            <div class="flex flex-row  gap-3 ">
+                {project.tags.map(item => {
+                  return (
+                    <span class="flex bg-blue-100 text-md font-light my-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300 justify-start gap-2 items-center w-auto"  >
+                    <item.icon class:list={"size-5"}></item.icon>
+                    <p >{item.nombre}</p> 
+                      </span>
+                    );
+                })}
+             
+            </div>
+            );
+          })
+    }
+   
     <div class="flex justify-self-end">
       <a
         href={gitHub}

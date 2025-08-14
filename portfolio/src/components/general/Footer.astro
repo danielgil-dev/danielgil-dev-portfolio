@@ -1,15 +1,32 @@
-<footer class="bg-purple-400">
-  <div class="relative mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 lg:pt-24">
-    <div class="absolute end-4 top-4 sm:end-6 sm:top-6 lg:end-8 lg:top-8">
-      <a
-        class="inline-block rounded-full bg-teal-600 p-2 text-white shadow-sm transition hover:bg-teal-500 sm:p-3 lg:p-4"
-        href="#MainContent"
-      >
-        <span class="sr-only">Back to top</span>
+---
+import GitHubIcon from "../../assets/Icons/GitHubIcon.astro";
+import LinkedInIcon from "../../assets/Icons/LinkedInIcon.astro";
+---
 
+<footer class="bg-gray-900/90 backdrop-blur-sm border-t border-gray-800">
+  <div class="mx-auto max-w-screen-xl px-4 py-6">
+    <div class="flex flex-col items-center justify-between gap-2 sm:flex-row">
+      <div class="flex items-center gap-2 text-teal-600">
+        <a href="https://linkedin.com/in/daniel-gil-dev" class="transition hover:text-teal-500">
+          <LinkedInIcon class:list={"size-15"} />
+        </a>
+        <a href="https://github.com/danielgil-dev" class="transition hover:text-teal-500">
+          <GitHubIcon class:list={"size-15"} />
+        </a>
+      </div>
+      
+      <p class="text-md text-gray-500">
+        Copyright &copy; 2025
+      </p>
+      
+      <a
+        class="rounded-full bg-teal-600 p-1 text-white transition hover:bg-teal-500"
+        href="#"
+        aria-label="Back to top"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="size-5"
+          class="size-8"
           viewBox="0 0 20 20"
           fill="currentColor"
         >
@@ -21,50 +38,5 @@
         </svg>
       </a>
     </div>
-
-    <div class="lg:flex lg:items-end lg:justify-between">
-      <div>
-        <div class="flex justify-center text-teal-600 lg:justify-start">
-         <a class="ml-1" href="https://linkedin.com/in/daniel-gil-dev">
-            {" "}
-            <img
-              src="https://img.icons8.com/?size=100&id=8808&format=png&color=000000"
-              class="w-10 h-10"
-            />
-         </a>
-          <a class="ml-1" href="https://github.com/danielgil-dev">
-            {" "}
-            <img
-              src="https://img.icons8.com/?size=100&id=12599&format=png&color=000000"
-              class="w-10 h-10"
-            />
-         </a>
-        </div>
-      </div>
-
-      <ul
-        class="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:mt-0 lg:justify-end lg:gap-12"
-      >
-        <li>
-          <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> About </a>
-        </li>
-
-        <li>
-          <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> Services </a>
-        </li>
-
-        <li>
-          <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> Projects </a>
-        </li>
-
-        <li>
-          <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> Blog </a>
-        </li>
-      </ul>
-    </div>
-
-    <p class="mt-12 text-center text-sm text-gray-500 lg:text-right">
-      Copyright &copy; 2025. All rights reserved.
-    </p>
   </div>
 </footer>

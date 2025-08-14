@@ -2,36 +2,41 @@
 import ProfileImage from "../../assets/ProfileImage.astro";
 ---
 
-<section class="lg:grid lg:h-screen lg:place-content-center">
-  <div
-    class="mx-auto w-screen max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 md:grid md:grid-cols-2 md:items-center md:gap-4 lg:px-8 lg:py-32"
-  >
-    <div class="max-w-prose text-left">
-      <h1 class="text-4xl font-bold text-gray-900 sm:text-5xl">
-        Full stack web 
-        <strong class="text-indigo-600"> Developer </strong>
-      </h1>
+<div class="grid md:grid-cols-2 gap-8 items-center">
+  <div class="order-2 md:order-1">
+    <h1 class="text-4xl md:text-5xl font-bold mb-6">
+      Full Stack Web 
+      <span class="text-indigo-500">Developer</span>
+    </h1>
 
-      <p class="mt-4 text-base text-pretty text-gray-700 sm:text-lg/relaxed">
-        Apasionado desarrollador web buscando usar mi creatividad y imaginación para crear soluciones
-      </p>
+    <p class="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-prose">
+      Apasionado desarrollador web buscando usar mi creatividad e imaginación para crear soluciones digitales que impacten positivamente en la experiencia del usuario.
+    </p>
 
-      <div class="mt-4 flex gap-4 sm:mt-6">
-        <a
-          class="inline-block rounded border border-indigo-600 bg-indigo-600 px-5 py-3 font-medium text-white shadow-sm transition-colors hover:bg-indigo-700"
-          href="#"
-        >
-          Conctacto
-        </a>
-
-        <a
-          class="inline-block rounded border border-gray-200 px-5 py-3 font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 hover:text-gray-900"
-          href="#"
-        >
-          R
-        </a>
+    <div class="flex flex-wrap gap-4">
+      <a
+        href="#contacto"
+        class="px-6 py-3 bg-indigo-600 text-white font-medium rounded-lg shadow-md hover:bg-indigo-700 transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      >
+        Contacto
+      </a>
+      
+      <a
+        href="/cv.pdf"
+        target="_blank"
+        class="px-6 py-3 bg-white text-gray-800 font-medium rounded-lg shadow-md hover:bg-gray-100 transition-colors border border-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-gray-200"
+      >
+        Descargar CV
+      </a>
+    </div>
+  </div>
+  
+  <div class="order-1 md:order-2 flex justify-center md:justify-end">
+    <div class="relative">
+      <div class="absolute inset-0 bg-indigo-500 rounded-full blur-3xl opacity-20"></div>
+      <div class="relative z-10">
+        <ProfileImage />
       </div>
     </div>
-    <ProfileImage></ProfileImage>
   </div>
-</section>
+</div>

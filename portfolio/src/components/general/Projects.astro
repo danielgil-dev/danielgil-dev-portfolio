@@ -1,17 +1,18 @@
 ---
 import ProjectCard from "./ProjectCard.astro"
+const {id} = Astro.props;
 
 ---
 <h1 class="text-5xl font-extrabold py-2 m-2 text-center text-white">Proyectos</h1>
 
-<div class="container mx-auto bg-amber-600  ">
+<div data-section={id} class="container mx-auto bg-amber-600  ">
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 py-1.5 m-2 ">
     
     <ProjectCard 
       link="https://github.com/danielgil-dev" 
       nombre="Ecolink" 
       description="is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has" 
-      tags="1,2,3" 
+      tags={[]}
       gitHub="https://github.com/danielgil-dev" 
     />
 
@@ -19,7 +20,7 @@ import ProjectCard from "./ProjectCard.astro"
       link="https://github.com/danielgil-dev" 
       nombre="Ecolink" 
      description="is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has" 
-      tags="1,2,3" 
+      tags={[]}
       gitHub="https://github.com/danielgil-dev" 
     />
 
@@ -27,7 +28,7 @@ import ProjectCard from "./ProjectCard.astro"
       link="https://github.com/danielgil-dev" 
       nombre="Ecolink" 
      description="is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has" 
-      tags="1,2,3" 
+      tags={[]}
       gitHub="https://github.com/danielgil-dev" 
     />
     

@@ -1,0 +1,35 @@
+---
+interface Props {
+  id: string;
+  className?: string;
+  color?: "primary" | "secondary" | "dark" | "light";
+  fullWidth?: boolean;
+}
+
+const {
+  id, 
+  className = "",
+  color = "light",
+  fullWidth = false
+} = Astro.props;
+
+// Definir colores de fondo y texto según el esquema
+const backgroundColors = {
+  primary: "bg-indigo-600 text-white",
+  secondary: "bg-teal-500 text-white",
+  dark: "bg-gray-900 text-white",
+  light: "bg-gray-50 text-gray-900"
+};
+
+const bgColorClass = backgroundColors[color];
+---
+
+<section
+  id={id}
+  data-section={id}
+  class={`section py-16 md:py-24 ${bgColorClass} scroll-mt-20 ${className}`}
+>
+  <div class={`${fullWidth ? 'w-full' : 'container mx-auto px-4 md:px-6 lg:px-8'}`}>
+    <slot />
+  </div>
+</section>
