@@ -3,10 +3,41 @@ import AngularIcon from "../../assets/Icons/AngularIcon.astro";
 import SpringBootIcon from "../../assets/Icons/SpringBootIcon.astro";
 import JavaScripIcon from "../../assets/Icons/JavaScriptIcon.astro";
 import GitIcon from "../../assets/Icons/GitIcon.astro";
+import MySqlIcon from "../../assets/Icons/MySqlIcon.astro";
+import BootstrapIcon from "../../assets/Icons/BootstrapIcon.astro"
+import TailwindIcon from "../../assets/Icons/TailwindIcon.astro"
+import SwaggerIcon from "../../assets/Icons/SwaggerIcon.astro"
+import PostmanIcon from "../../assets/Icons/PostmanIcon.astro"
+import AstroIcon from "../../assets/Icons/AstroIcon.astro"
+import DockerIcon from "../../assets/Icons/DockerIcon.astro"
 const {id} = Astro.props;
 
 
 const classList = "h-auto max-w-full rounded-lg size-40 py-3 m-0.5";
+---
+
+<style>
+  .tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .tech-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .tech-item p {
+    margin-top: 0.5rem;
+    font-weight: 500;
+    color: white;
+  }
+</style>
+
 ---
 <h1 class="text-5xl font-extrabold py-2 m-2 text-center text-white">Tecnologías</h1>
 <div data-section={id} class="flex items-center justify-center py-4 md:py-8 flex-wrap">
@@ -31,9 +62,49 @@ const classList = "h-auto max-w-full rounded-lg size-40 py-3 m-0.5";
     >Tools</button
   >
 </div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-  <AngularIcon class:list={classList} />
-  <SpringBootIcon class:list={classList} />
-  <JavaScripIcon class:list={classList} />
-  <GitIcon class:list={classList}></GitIcon>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+  <div class="tech-item">
+    <AngularIcon class:list={classList} />
+    <p>Angular</p>
+  </div>
+  <div class="tech-item">
+    <SpringBootIcon class:list={classList} />
+    <p>Spring Boot</p>
+  </div>
+  <div class="tech-item">
+    <JavaScripIcon class:list={classList} />
+    <p>JavaScript</p>
+  </div>
+  <div class="tech-item">
+    <GitIcon class:list={classList} />
+    <p>Git</p>
+  </div>
+  <div class="tech-item">
+    <BootstrapIcon class:list={classList} />
+    <p>Bootstrap</p>
+  </div>
+  <div class="tech-item">
+    <MySqlIcon class:list={classList} />
+    <p>MySQL</p>
+  </div>
+  <div class="tech-item">
+    <TailwindIcon class:list={classList} />
+    <p>Tailwind</p>
+  </div>
+  <div class="tech-item">
+    <SwaggerIcon class:list={classList} />
+    <p>Swagger</p>
+  </div>
+  <div class="tech-item">
+    <PostmanIcon class:list={classList} />
+    <p>Postman</p>
+  </div>
+  <div class="tech-item">
+    <AstroIcon class:list={classList} />
+    <p>Astro</p>
+  </div>
+  <div class="tech-item">
+    <DockerIcon class:list={classList} />
+    <p>Docker</p>
+  </div>
 </div>
