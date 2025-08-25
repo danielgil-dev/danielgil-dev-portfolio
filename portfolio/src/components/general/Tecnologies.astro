@@ -10,6 +10,8 @@ import SwaggerIcon from "../../assets/Icons/SwaggerIcon.astro"
 import PostmanIcon from "../../assets/Icons/PostmanIcon.astro"
 import AstroIcon from "../../assets/Icons/AstroIcon.astro"
 import DockerIcon from "../../assets/Icons/DockerIcon.astro"
+import SassIcon from "../../assets/Icons/SassIcon.astro"
+import LinuxIcon from "../../assets/Icons/LinuxIcon.astro"
 const {id} = Astro.props;
 
 
@@ -25,6 +27,8 @@ const classList = "h-auto max-w-full rounded-lg size-40 py-3 m-0.5";
     text-align: center;
     padding: 1rem;
     transition: transform 0.3s ease;
+    border: solid black 2px;
+    border-radius:90px;
   }
   
   .tech-item:hover {
@@ -38,7 +42,7 @@ const classList = "h-auto max-w-full rounded-lg size-40 py-3 m-0.5";
   }
 </style>
 
----
+
 <h1 class="text-5xl font-extrabold py-2 m-2 text-center text-white">Tecnologías</h1>
 <div data-section={id} class="flex items-center justify-center py-4 md:py-8 flex-wrap">
   <button
@@ -106,5 +110,9 @@ const classList = "h-auto max-w-full rounded-lg size-40 py-3 m-0.5";
   <div class="tech-item">
     <DockerIcon class:list={classList} />
     <p>Docker</p>
+  </div>
+  <div class="tech-item">
+    <SassIcon class:list={classList} />
+    <p>Sass</p>
   </div>
 </div>
