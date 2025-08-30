@@ -1,29 +1,153 @@
 ---
-
+// No se necesitan importaciones adicionales
 ---
-<h1 class="text-5xl font-extrabold py-2 m-2 text-center text-white">Contacto</h1>
-<form class="max-w-2xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700">
-  <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Mandame un mensaje!</h3>
-  
-  <div class="grid grid-cols-1 gap-4 mb-4">
-    <div>
-      <label for="name-input" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Name:</label>
-      <input type="text" id="name-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500" placeholder="Your name">
+
+<section class="py-16 px-4">
+  <h2 class="text-4xl font-bold mb-12 text-center text-white">Contacto</h2>
+
+  <form 
+    id="contact-form"
+    action="https://formspree.io/f/mldwbrwa" 
+    method="POST" 
+    class="max-w-xl mx-auto p-8 bg-gray-800/60 backdrop-blur-sm rounded-xl border border-gray-700/50 shadow-lg transition-all"
+  >    
+    <div class="space-y-6">
+      <div>
+        <label for="name-input" class="block text-sm font-medium text-gray-300 mb-1">Nombre</label>
+        <input 
+          type="text" 
+          id="name-input" 
+          name="name" 
+          required
+          class="w-full bg-gray-700/70 border-0 border-b-2 border-gray-600 text-white px-3 py-2.5 rounded-t-md focus:ring-0 transition-colors"
+          placeholder="Tu nombre"
+        >
+      </div>
+      
+      <div>
+        <label for="email-input" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+        <input 
+          type="email" 
+          id="email-input" 
+          name="email" 
+          required
+          class="w-full bg-gray-700/70 border-0 border-b-2 border-gray-600 text-white px-3 py-2.5 rounded-t-md focus:ring-0 transition-colors"
+          placeholder="tu@email.com"
+        >
+      </div>
+      
+      <div>
+        <label for="message-input" class="block text-sm font-medium text-gray-300 mb-1">Mensaje</label>
+        <textarea 
+          id="message-input" 
+          name="message" 
+          rows="4" 
+          required
+          class="w-full bg-gray-700/70 border-0 border-b-2 border-gray-600 text-white px-3 py-2.5 rounded-t-md focus:ring-0 transition-colors resize-none"
+          placeholder="Escribe tu mensaje aquí..."
+        ></textarea>
+      </div>
     </div>
-    <div>
-      <label for="email-input" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Email:</label>
-      <input type="email" id="email-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500" placeholder="your@email.com">
+    
+    <!-- Estado del formulario para errores -->
+    <div id="form-status" class="min-h-6 mt-4 text-sm"></div>
+    
+    <!-- Botón de envío -->
+    <div class="mt-6">
+      <button 
+        type="submit" 
+        id="submit-button"
+        class="w-full py-3 px-4 bg-teal-600 hover:bg-teal-700 text-white font-medium rounded-md transition-colors shadow-md flex items-center justify-center gap-2"
+      >
+        <span>Enviar</span>
+        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+        </svg>
+      </button>
     </div>
-  </div>
+  </form>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const formStatus = document.getElementById('form-status');
+  const submitButton = document.getElementById('submit-button');
   
-  <div class="relative">
-    <textarea id="chat" rows="4" class="block w-full p-3 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-teal-500 focus:border-teal-500 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500 resize-none" placeholder="Your message..."></textarea>
-    <button type="submit" class="absolute bottom-3 right-3 inline-flex justify-center p-2 text-white bg-teal-600 rounded-full cursor-pointer hover:bg-teal-500 shadow-md dark:bg-teal-600 dark:hover:bg-teal-500">
-      <svg class="w-5 h-5 rotate-90 rtl:-rotate-90" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
-        <path d="m17.914 18.594-8-18a1 1 0 0 0-1.828 0l-8 18a1 1 0 0 0 1.157 1.376L8 18.281V9a1 1 0 0 1 2 0v9.281l6.758 1.689a1 1 0 0 0 1.156-1.376Z"/>
-      </svg>
-      <span class="sr-only">Send message</span>
-    </button>
-  </div>
-</form>
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Cambiar estado del botón
+      submitButton.disabled = true;
+      const originalButtonHtml = submitButton.innerHTML;
+      submitButton.innerHTML = `
+        <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+      `;
+      
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {'Accept': 'application/json'}
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+          // Éxito - solo indicación visual y reset del formulario
+          formStatus.innerHTML = "";
+          form.reset();
+          
+          // Añadir clase de éxito al formulario
+          form.classList.add('ring-2', 'ring-green-500/50');
+          
+          // Mostrar checkmark en el botón brevemente
+          submitButton.innerHTML = `
+            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          `;
+          submitButton.classList.add('bg-green-600');
+          submitButton.classList.remove('bg-teal-600', 'hover:bg-teal-700');
+          
+          // Después de un tiempo, restaurar
+          setTimeout(() => {
+            form.classList.remove('ring-2', 'ring-green-500/50');
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonHtml;
+            submitButton.classList.remove('bg-green-600');
+            submitButton.classList.add('bg-teal-600', 'hover:bg-teal-700');
+          }, 3000);
+          
+        } else {
+          // Error desde Formspree
+          formStatus.innerHTML = `
+            <div class="p-2 text-sm text-red-400 rounded-md" role="alert">
+              ${data.error || 'Error al enviar. Inténtalo de nuevo.'}
+            </div>
+          `;
+          
+          // Restaurar botón
+          submitButton.disabled = false;
+          submitButton.innerHTML = originalButtonHtml;
+        }
+      } catch (error) {
+        // Error de red o JavaScript
+        formStatus.innerHTML = `
+          <div class="p-2 text-sm text-red-400 rounded-md" role="alert">
+            Error de conexión. Verifica tu conexión a internet.
+          </div>
+        `;
+        
+        // Restaurar botón
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalButtonHtml;
+      }
+    });
+  }
+</script>
 

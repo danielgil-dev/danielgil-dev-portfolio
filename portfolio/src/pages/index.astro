@@ -7,9 +7,10 @@ import Tecnologies from "../components/general/Tecnologies.astro";
 import Projects from "../components/general/Projects.astro";
 import SectionContainer from "../components/general/SectionContainer.astro";
 import Contact from "../components/general/Contact.astro";
+import Experience from "../components/general/Experience.astro"
 ---
 
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -37,6 +38,10 @@ import Contact from "../components/general/Contact.astro";
 
     <SectionContainer id="proyectos" color="primary">
       <Projects />
+    </SectionContainer>
+
+     <SectionContainer id="educacion" color="dark">
+      <Experience />
     </SectionContainer>
 
     <SectionContainer id="contacto" color="dark">
