@@ -2,48 +2,48 @@
 // No se necesitan importaciones adicionales
 ---
 
-<section class="py-16 px-4">
-  <h2 class="text-4xl font-bold mb-12 text-center text-white">Contacto</h2>
+<div class="py-16 px-4">
+  <h2 class="text-4xl font-bold mb-12 text-center text-indigo-900 dark:text-white">Contacto</h2>
 
   <form 
     id="contact-form"
     action="https://formspree.io/f/mldwbrwa" 
     method="POST" 
-    class="max-w-xl mx-auto p-8 bg-gray-800/60 backdrop-blur-sm rounded-xl border border-gray-700/50 shadow-lg transition-all"
+    class="max-w-xl mx-auto p-8 bg-white/95 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-gray-700/50 shadow-lg transition-all duration-300"
   >    
     <div class="space-y-6">
       <div>
-        <label for="name-input" class="block text-sm font-medium text-gray-300 mb-1">Nombre</label>
+        <label for="name-input" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nombre</label>
         <input 
           type="text" 
           id="name-input" 
           name="name" 
           required
-          class="w-full bg-gray-700/70 border-0 border-b-2 border-gray-600 text-white px-3 py-2.5 rounded-t-md focus:ring-0 transition-colors"
+          class="w-full bg-gray-100 dark:bg-gray-700/70 border-0 border-b-2 border-indigo-200 dark:border-gray-600 text-gray-800 dark:text-white px-3 py-2.5 rounded-t-md focus:ring-0 focus:border-indigo-500 dark:focus:border-indigo-400 transition-colors"
           placeholder="Tu nombre"
         >
       </div>
       
       <div>
-        <label for="email-input" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+        <label for="email-input" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
         <input 
           type="email" 
           id="email-input" 
           name="email" 
           required
-          class="w-full bg-gray-700/70 border-0 border-b-2 border-gray-600 text-white px-3 py-2.5 rounded-t-md focus:ring-0 transition-colors"
+          class="w-full bg-gray-100 dark:bg-gray-700/70 border-0 border-b-2 border-indigo-200 dark:border-gray-600 text-gray-800 dark:text-white px-3 py-2.5 rounded-t-md focus:ring-0 focus:border-indigo-500 dark:focus:border-indigo-400 transition-colors"
           placeholder="tu@email.com"
         >
       </div>
       
       <div>
-        <label for="message-input" class="block text-sm font-medium text-gray-300 mb-1">Mensaje</label>
+        <label for="message-input" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Mensaje</label>
         <textarea 
           id="message-input" 
           name="message" 
           rows="4" 
           required
-          class="w-full bg-gray-700/70 border-0 border-b-2 border-gray-600 text-white px-3 py-2.5 rounded-t-md focus:ring-0 transition-colors resize-none"
+          class="w-full bg-gray-100 dark:bg-gray-700/70 border-0 border-b-2 border-indigo-200 dark:border-gray-600 text-gray-800 dark:text-white px-3 py-2.5 rounded-t-md focus:ring-0 focus:border-indigo-500 dark:focus:border-indigo-400 transition-colors resize-none"
           placeholder="Escribe tu mensaje aquí..."
         ></textarea>
       </div>
@@ -57,7 +57,7 @@
       <button 
         type="submit" 
         id="submit-button"
-        class="w-full py-3 px-4 bg-teal-600 hover:bg-teal-700 text-white font-medium rounded-md transition-colors shadow-md flex items-center justify-center gap-2"
+        class="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-600 text-white font-medium rounded-md transition-colors shadow-md flex items-center justify-center gap-2"
       >
         <span>Enviar</span>
         <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -66,7 +66,7 @@
       </button>
     </div>
   </form>
-</section>
+</div>
 
 <script>
   const form = document.getElementById('contact-form');
@@ -112,7 +112,7 @@
             </svg>
           `;
           submitButton.classList.add('bg-green-600');
-          submitButton.classList.remove('bg-teal-600', 'hover:bg-teal-700');
+          submitButton.classList.remove('bg-indigo-600', 'hover:bg-indigo-700', 'dark:bg-indigo-700', 'dark:hover:bg-indigo-600');
           
           // Después de un tiempo, restaurar
           setTimeout(() => {
@@ -120,7 +120,7 @@
             submitButton.disabled = false;
             submitButton.innerHTML = originalButtonHtml;
             submitButton.classList.remove('bg-green-600');
-            submitButton.classList.add('bg-teal-600', 'hover:bg-teal-700');
+            submitButton.classList.add('bg-indigo-600', 'hover:bg-indigo-700', 'dark:bg-indigo-700', 'dark:hover:bg-indigo-600');
           }, 3000);
           
         } else {

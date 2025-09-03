@@ -2,32 +2,32 @@
 interface Props {
   id: string;
   className?: string;
-  color?: "primary" | "secondary" | "dark" | "light";
+  color?: "primary" | "secondary" | "accent" | "neutral";
   fullWidth?: boolean;
 }
 
 const {
   id, 
   className = "",
-  color = "light",
+  color = "neutral",
   fullWidth = false
 } = Astro.props;
 
-// Definir colores de fondo y texto según el esquema
-const backgroundColors = {
-  primary: "bg-indigo-600 text-white",
-  secondary: "bg-teal-500 text-white",
-  dark: "bg-gray-900 text-white",
-  light: "bg-gray-50 text-gray-900"
+// Definir solo colores de texto según el esquema, sin fondos
+const textColors = {
+  primary: "text-indigo-900 dark:text-white",
+  secondary: "text-indigo-800 dark:text-white",
+  accent: "text-indigo-900 dark:text-white",
+  neutral: "text-gray-900 dark:text-white"
 };
 
-const bgColorClass = backgroundColors[color];
+const textColorClass = textColors[color];
 ---
 
 <section
   id={id}
   data-section={id}
-  class={`section py-16 md:py-24 ${bgColorClass} scroll-mt-20 ${className}`}
+  class={`section py-16 md:py-24 transition-colors duration-300 scroll-mt-20 ${textColorClass}`}
 >
   <div class={`${fullWidth ? 'w-full' : 'container mx-auto px-4 md:px-6 lg:px-8'}`}>
     <slot />

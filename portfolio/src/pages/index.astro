@@ -1,7 +1,5 @@
 ---
-import "../../src/styles/global.css";
-import Header from "../components/general/Header.astro";
-import Footer from "../components/general/Footer.astro";
+import Layout from "../layouts/Layout.astro";
 import Profile from "../components/general/AboutMe.astro";
 import Tecnologies from "../components/general/Tecnologies.astro";
 import Projects from "../components/general/Projects.astro";
@@ -10,46 +8,27 @@ import Contact from "../components/general/Contact.astro";
 import Experience from "../components/general/Experience.astro"
 ---
 
-<html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <title>
-      Desarrolador de aplicaciones web, creando experiencias unicas,divertidas y
-      eficaces
-    </title>
-  </head>
-
-  <body
-    class="absolute top-0 z-[-2] h-screen w-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px]"
-  >
-    <SectionContainer id="header" fullWidth={true} color="dark">
-      <Header />
-    </SectionContainer>
-
-    <SectionContainer id="perfil" color="light">
+<Layout 
+  title="Daniel Gil - Desarrollador de aplicaciones web" 
+  description="Desarrollador de aplicaciones web, creando experiencias únicas, divertidas y eficaces"
+>
+    <SectionContainer id="perfil">
       <Profile />
     </SectionContainer>
 
-    <SectionContainer id="tecnologias" color="dark">
+    <SectionContainer id="tecnologias">
       <Tecnologies />
     </SectionContainer>
 
-    <SectionContainer id="proyectos" color="primary">
+    <SectionContainer id="proyectos">
       <Projects />
     </SectionContainer>
 
-     <SectionContainer id="educacion" color="dark">
+    <SectionContainer id="trayectoria">
       <Experience />
     </SectionContainer>
 
-    <SectionContainer id="contacto" color="dark">
+    <SectionContainer id="contacto">
       <Contact />
     </SectionContainer>
-
-    <SectionContainer id="footer" fullWidth={true} color="dark" className="py-8">
-      <Footer />
-    </SectionContainer>
-  </body>
-</html>
+</Layout>

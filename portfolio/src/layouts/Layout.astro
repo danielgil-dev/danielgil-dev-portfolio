@@ -1,16 +1,24 @@
 ---
-// En Layout.astro (crea este archivo si no lo tienes)
 import "../styles/global.css";
+import Footer from "../components/general/Footer.astro";
+import ThemeIcon from "../components/general/ThemeIcon.astro";
+import Header from "../components/general/Header.astro";
+import SectionContainer from "../components/general/SectionContainer.astro";
 
 interface Props {
   title: string;
   description: string;
+  showHeader?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { 
+  title, 
+  description,
+  showHeader = true 
+} = Astro.props;
 ---
 
-<html lang="es">
+<html lang="es" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -22,37 +30,71 @@ const { title, description } = Astro.props;
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
   </head>
 
-  <body class="min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 text-gray-50 font-inter">
-    <slot />
+  <body class="flex flex-col min-h-screen w-full dark:bg-[#000000] dark:bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[#f5f7ff] bg-[radial-gradient(#3b82f680_1px,#f8fafc_1px)] bg-[size:20px_20px] transition-colors duration-300">
     
-    <!-- Script para destacar la sección activa en la navegación -->
+    {showHeader && (
+      <SectionContainer id="header" fullWidth={true}>
+        <Header />
+      </SectionContainer>
+    )}
+
+    <div class="flex-1">
+      <slot />
+    </div>
+    
+    <Footer />
+  
     <script>
-      // Script para la navegación y secciones activas
+      // Script optimizado para destacar la navegación activa
       document.addEventListener('DOMContentLoaded', () => {
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('nav a');
+        // Seleccionar todos los enlaces de navegación y secciones
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+        const sections = document.querySelectorAll('section[data-section]');
         
-        function highlightNavigation() {
-          let scrollY = window.scrollY;
+        if (sections.length > 0 && navLinks.length > 0) {
+          // Por defecto, destaca el primer enlace
+          const firstLink = navLinks[0];
+          firstLink.classList.add('nav-active', 'text-white', 'font-medium');
+          firstLink.classList.remove('text-gray-300');
           
-          sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
+          // Configura el Intersection Observer para detectar cuándo una sección es visible
+          const observerOptions = {
+            root: null, // viewport
+            rootMargin: '-50px 0px -50% 0px', // Margen ajustado para mejor precisión
+            threshold: 0.1 // 10% de la sección debe ser visible
+          };
+          
+          const observer = new IntersectionObserver((entries) => {
+            // Filtra las entradas que están intersectando
+            const visibleSections = entries.filter(entry => entry.isIntersecting);
             
-            if(scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            // Si hay secciones visibles, actualiza la navegación
+            if (visibleSections.length > 0) {
+              // Toma la primera sección visible (la más alta en la página)
+              const sectionId = visibleSections[0].target.getAttribute('data-section');
+              
+              // Actualiza las clases en los enlaces de navegación
               navLinks.forEach(link => {
-                link.classList.remove('nav-active');
-                if(link.getAttribute('href') === `#${sectionId}`) {
-                  link.classList.add('nav-active');
+                const href = link.getAttribute('href').substring(1); // Quita el #
+                
+                if (href === sectionId) {
+                  // Activa el enlace correspondiente a la sección visible
+                  link.classList.add('nav-active', 'text-white', 'font-medium');
+                  link.classList.remove('text-gray-300');
+                } else {
+                  // Desactiva los demás enlaces
+                  link.classList.remove('nav-active', 'text-white', 'font-medium');
+                  link.classList.add('text-gray-300');
                 }
               });
             }
+          }, observerOptions);
+          
+          // Observa todas las secciones
+          sections.forEach(section => {
+            observer.observe(section);
           });
         }
-        
-        window.addEventListener('scroll', highlightNavigation);
-        highlightNavigation();
       });
     </script>
   </body>
