@@ -7,7 +7,12 @@ const { id } = Astro.props;
 
 <div>
   <div class="container mx-auto px-4">
-    <h2 class="text-5xl font-extrabold mb-10 text-center text-indigo-900 dark:text-white">Proyectos</h2>
+    <h2 class="text-5xl font-extrabold mb-8 text-center">
+      <span class="relative inline-block">
+        <span class="relative z-10 bg-gradient-to-r from-indigo-600 to-indigo-400 dark:from-indigo-500 dark:to-indigo-300 bg-clip-text text-transparent">Proyectos</span>
+        <span class="absolute left-0 bottom-3 w-full h-4 bg-yellow-300/30 dark:bg-yellow-400/40 -rotate-1 rounded shadow-sm"></span>
+      </span>
+    </h2>
     
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       {projects.map(project => (

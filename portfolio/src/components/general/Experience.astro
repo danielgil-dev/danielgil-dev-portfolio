@@ -3,9 +3,14 @@ const {id} = Astro.props
 ---
 
 <div>
-  <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 sm:mb-10 text-center text-indigo-900 dark:text-white">Formación y Trayectoria</h2>
+  <h2 class="font-title text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 sm:mb-10 text-center">
+    <span class="relative inline-block">
+      <span class="relative z-10 bg-gradient-to-r from-indigo-600 to-indigo-400 dark:from-indigo-500 dark:to-indigo-300 bg-clip-text text-transparent">Formación y Trayectoria</span>
+      <span class="absolute left-0 bottom-2.5 md:bottom-3 w-full h-3 md:h-4 bg-yellow-300/30 dark:bg-yellow-400/40 -rotate-1 rounded shadow-sm"></span>
+    </span>
+  </h2>
   
-  <div class="max-w-4xl mx-auto">
+  <div class="max-w-4xl mx-auto font-body">
   
     <ol class="relative border-s-2 border-indigo-500/30 dark:border-indigo-400/30 ms-3 sm:ms-6 space-y-10">
         <li class="mb-10 ms-6 group">
@@ -15,7 +20,7 @@ const {id} = Astro.props
                 </svg>
             </span>
             <div class="p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-md transform transition duration-300 hover:-translate-y-1 hover:shadow-indigo-900/20 hover:shadow-lg">
-                <h3 class="flex items-center text-xl font-semibold text-gray-900 dark:text-white">
+                <h3 class="flex items-center text-xl font-title font-semibold text-gray-900 dark:text-white">
                     IES Doctor Balmis
                     <span class="bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-300 text-sm font-medium me-2 px-2.5 py-0.5 rounded ms-3">Graduado</span>
                 </h3>

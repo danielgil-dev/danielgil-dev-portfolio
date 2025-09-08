@@ -1,22 +1,32 @@
 ---
 import ProfileImage from "../../assets/ProfileImage.astro";
+import Badge from "../../assets/Badge.astro";
 ---
 
-<div class="grid md:grid-cols-2 gap-8 items-center">
-  <div class="order-2 md:order-1">
-    <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white transition-colors">
-      Full Stack Web 
-      <span class="text-indigo-600 dark:text-indigo-400 transition-colors">Developer</span>
+<div class="grid md:grid-cols-1 gap-8 items-center">
+  <div class="md:order-1">
+    <div class="flex flex-col gap-2 mb-4">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 rounded-full overflow-hidden border-2 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+          <ProfileImage />
+        </div>
+        <Badge class="text-2xl font-medium">Disponible para trabajar</Badge>
+      </div>
+    </div>
+    <h1 class="font-title text-5xl md:text-6xl font-bold mb-8 tracking-tighter transition-colors">
+      <span class="text-gray-900 dark:text-white">Hey soy</span>
+      <span class="text-yellow-500 dark:text-yellow-400"> Daniel</span> 
+      <span class="text-gray-900 dark:text-white">y creo páginas web</span>
     </h1>
 
-    <p class="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-prose transition-colors">
-      Apasionado desarrollador web buscando usar mi creatividad e imaginación para crear soluciones digitales que impacten positivamente en la experiencia del usuario.
+    <p class="font-body text-xl md:text-2xl leading-relaxed text-gray-700 dark:text-gray-300 mb-10 max-w-4xl transition-colors">
+      Me <strong>encanta imaginar</strong>, <strong>crear</strong> y <strong>dar vida</strong> a <span class="underline decoration-indigo-400 decoration-2 underline-offset-2">proyectos web</span> que no solo <strong>funcionen</strong>, sino que <strong>inspiren</strong> a quienes los usan. Mi objetivo es seguir creciendo como <span class="text-indigo-600 dark:text-indigo-400">desarrollador</span> mientras aporto <strong>soluciones</strong> que hagan la experiencia digital más <strong>humana</strong> y <strong>efectiva</strong>.
     </p>
 
-    <div class="flex flex-wrap gap-4">
+    <div class="flex flex-wrap gap-6 mt-2">
       <a
         href="#contacto"
-        class="px-6 py-3 bg-indigo-600 text-white font-medium rounded-lg shadow-md hover:bg-indigo-500 dark:bg-indigo-700 dark:hover:bg-indigo-600 transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+        class="px-8 py-4 text-lg bg-indigo-600 text-white font-medium rounded-lg shadow-md hover:bg-indigo-500 hover:text-white dark:bg-indigo-700 dark:hover:bg-indigo-600 dark:text-white dark:hover:text-white transition-all focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 transform hover:-translate-y-1 hover:shadow-lg"
       >
         Contacto
       </a>
@@ -24,21 +34,11 @@ import ProfileImage from "../../assets/ProfileImage.astro";
       <a
         href="/curriculumProfesional-Daniel.pdf"
         download
-        class="px-6 py-3 bg-white text-indigo-600 font-medium rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:text-indigo-400 dark:hover:bg-gray-700 transition-colors border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-200 dark:focus:ring-indigo-900"
+        class="px-8 py-4 text-lg bg-white text-indigo-600 font-medium rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:text-indigo-400 dark:hover:bg-gray-700 transition-colors border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-200 dark:focus:ring-indigo-900 transform hover:-translate-y-1 hover:shadow-lg"
       >
         Descargar CV
       </a>
     </div>
   </div>
   
-  <div class="order-1 md:order-2 flex justify-center md:justify-end">
-    <div class="relative">
-      <div class="absolute inset-0 bg-indigo-600 dark:bg-indigo-400 rounded-full blur-3xl opacity-20 transition-colors duration-300"></div>
-      <div class="relative z-10">
-        <div class="rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-lg transition-colors duration-300">
-          <ProfileImage />
-        </div>
-      </div>
-    </div>
-  </div>
 </div>

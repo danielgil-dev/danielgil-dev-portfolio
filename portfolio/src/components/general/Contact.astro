@@ -1,28 +1,45 @@
----
-// No se necesitan importaciones adicionales
----
 
-<div class="py-16 px-4">
-  <h2 class="text-4xl font-bold mb-12 text-center text-indigo-900 dark:text-white">Contacto</h2>
+<div class="py-10 px-4">
+  <h2 class="text-4xl font-bold mb-8 text-center">
+    <span class="relative inline-block">
+      <span class="relative z-10 bg-gradient-to-r from-indigo-600 to-indigo-400 dark:from-indigo-500 dark:to-indigo-300 bg-clip-text text-transparent">Contacto</span>
+      <span class="absolute left-0 bottom-1.5 w-full h-3 bg-yellow-300/30 dark:bg-yellow-400/40 -rotate-1 rounded shadow-sm"></span>
+    </span>
+  </h2>
 
-  <form 
-    id="contact-form"
-    action="https://formspree.io/f/mldwbrwa" 
-    method="POST" 
-    class="max-w-xl mx-auto p-8 bg-white/95 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-gray-700/50 shadow-lg transition-all duration-300"
-  >    
-    <div class="space-y-6">
-      <div>
-        <label for="name-input" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nombre</label>
-        <input 
-          type="text" 
-          id="name-input" 
-          name="name" 
-          required
-          class="w-full bg-gray-100 dark:bg-gray-700/70 border-0 border-b-2 border-indigo-200 dark:border-gray-600 text-gray-800 dark:text-white px-3 py-2.5 rounded-t-md focus:ring-0 focus:border-indigo-500 dark:focus:border-indigo-400 transition-colors"
-          placeholder="Tu nombre"
-        >
-      </div>
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <!-- Columna de texto minimalista con animaciones de Tailwind -->
+    <div class="flex flex-col justify-center p-6 lg:p-10">
+      <h3 class="text-3xl md:text-4xl font-bold text-indigo-700 dark:text-indigo-400 mb-6 animate-fade-in motion-reduce:animate-none">
+        ¿Hablamos?
+      </h3>
+      <p class="text-gray-700 dark:text-gray-300 text-xl md:text-2xl font-light leading-relaxed opacity-0 animate-fade-in-delayed motion-reduce:animate-none">
+        Estoy disponible para nuevas oportunidades y colaboraciones.
+      </p>
+      <p class="text-gray-700 dark:text-gray-300 text-lg md:text-xl mt-4 opacity-0 animate-fade-in-delayed-more border-l-4 border-indigo-500 pl-4 transition-all duration-300 hover:border-indigo-400 hover:translate-x-1 motion-reduce:animate-none">
+        Envíame un mensaje y me pondré en contacto contigo lo antes posible.
+      </p>
+    </div>
+    
+    <!-- Columna del formulario -->
+    <form 
+      id="contact-form"
+      action="https://formspree.io/f/mldwbrwa" 
+      method="POST" 
+      class="p-8 bg-white/95 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-gray-700/50 shadow-lg transition-all duration-300"
+    >    
+      <div class="space-y-6">
+        <div>
+          <label for="name-input" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nombre</label>
+          <input 
+            type="text" 
+            id="name-input" 
+            name="name" 
+            required
+            class="w-full bg-gray-100 dark:bg-gray-700/70 border-0 border-b-2 border-indigo-200 dark:border-gray-600 text-gray-800 dark:text-white px-3 py-2.5 rounded-t-md focus:ring-0 focus:border-indigo-500 dark:focus:border-indigo-400 transition-colors"
+            placeholder="Tu nombre"
+          >
+        </div>
       
       <div>
         <label for="email-input" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
@@ -66,6 +83,7 @@
       </button>
     </div>
   </form>
+  </div>
 </div>
 
 <script>
@@ -150,4 +168,5 @@
     });
   }
 </script>
+
 
