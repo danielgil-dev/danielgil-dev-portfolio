@@ -7,27 +7,41 @@
     </span>
   </h2>
 
-  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-    <!-- Columna de texto minimalista con animaciones de Tailwind -->
-    <div class="flex flex-col justify-center p-6 lg:p-10">
-      <h3 class="text-3xl md:text-4xl font-bold text-indigo-700 dark:text-indigo-400 mb-6 animate-fade-in motion-reduce:animate-none">
-        ¿Hablamos?
-      </h3>
-      <p class="text-gray-700 dark:text-gray-300 text-xl md:text-2xl font-light leading-relaxed opacity-0 animate-fade-in-delayed motion-reduce:animate-none">
+  <div class="max-w-6xl mx-auto">
+    <!-- Sección "¿Hablamos?" visible solo en móvil con diseño horizontal -->
+    <div class="md:hidden mb-6 px-4 py-6 bg-gradient-to-r from-indigo-50/80 to-transparent dark:from-indigo-900/20 dark:to-transparent rounded-lg">
+      <div class="flex flex-col sm:flex-row items-center gap-4">
+        <h3 class="text-3xl font-bold text-indigo-700 dark:text-indigo-400 animate-fade-in motion-reduce:animate-none text-center sm:text-left">
+          ¿Hablamos?
+        </h3>
+      </div>
+      <p class="text-gray-700 dark:text-gray-300 text-lg font-light leading-relaxed mt-2 animate-fade-in-delayed motion-reduce:animate-none text-center sm:text-left">
         Estoy disponible para nuevas oportunidades y colaboraciones.
-      </p>
-      <p class="text-gray-700 dark:text-gray-300 text-lg md:text-xl mt-4 opacity-0 animate-fade-in-delayed-more border-l-4 border-indigo-500 pl-4 transition-all duration-300 hover:border-indigo-400 hover:translate-x-1 motion-reduce:animate-none">
-        Envíame un mensaje y me pondré en contacto contigo lo antes posible.
       </p>
     </div>
     
-    <!-- Columna del formulario -->
-    <form 
-      id="contact-form"
-      action="https://formspree.io/f/mldwbrwa" 
-      method="POST" 
-      class="p-8 bg-white/95 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-gray-700/50 shadow-lg transition-all duration-300"
-    >    
+    <!-- Grid para desktop -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <!-- Columna de texto minimalista con animaciones de Tailwind (visible solo en desktop) -->
+      <div class="hidden md:flex flex-col justify-center p-6 lg:p-10">
+        <h3 class="text-3xl  md:text-4xl font-bold text-indigo-700 dark:text-indigo-400 mb-6 animate-fade-in motion-reduce:animate-none">
+          ¿Hablamos?
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 text-xl md:text-2xl font-light leading-relaxed opacity-0 animate-fade-in-delayed motion-reduce:animate-none">
+          Estoy disponible para nuevas oportunidades y colaboraciones.
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 text-lg md:text-xl mt-4 opacity-0 animate-fade-in-delayed-more border-l-4 border-indigo-500 pl-4 transition-all duration-300 hover:border-indigo-400 hover:translate-x-1 motion-reduce:animate-none">
+          Envíame un mensaje y me pondré en contacto contigo lo antes posible.
+        </p>
+      </div>
+      
+      <!-- Columna del formulario -->
+      <form 
+        id="contact-form"
+        action="https://formspree.io/f/mldwbrwa" 
+        method="POST" 
+        class="p-8 bg-white/95 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-gray-700/50 shadow-lg transition-all duration-300 md:col-start-2"
+      >    
       <div class="space-y-6">
         <div>
           <label for="name-input" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nombre</label>
@@ -82,6 +96,11 @@
         </svg>
       </button>
     </div>
+    
+    <!-- Texto adicional solo visible en móvil -->
+    <p class="md:hidden text-center text-gray-500 dark:text-gray-400 text-sm text-wrap mt-4 italic  border-t border-gray-200 dark:border-gray-700 pt-4 opacity-0 animate-fade-in-delayed-more motion-reduce:animate-none">
+      Me pondré en contacto contigo lo antes posible.
+    </p>
   </form>
   </div>
 </div>

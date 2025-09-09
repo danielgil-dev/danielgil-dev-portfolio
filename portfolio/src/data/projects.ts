@@ -7,7 +7,7 @@ export const projects = [
   {
     title: "Ecolink",
     image: Ecolink,
-    description: "Proyecto Final de Grado: EcoLink, una plataforma web que conecta startups con empresas mediante un marketplace, perfiles personalizados y funciones sociales.",
+    description:" Proyecto Final de Grado: una plataforma web que conecta startups sostenibles con empresas a través de un marketplace, perfiles personalizados, funciones sociales y una IA que ayuda a optimizar los perfiles de usuario.",
     tags: [
       {
         name: "Angular",
@@ -16,15 +16,23 @@ export const projects = [
       {
         name: "Spring Boot",
         icon: "SpringBootIcon"
+      },
+      {
+        name: "Docker",
+        icon: "DockerIcon"
+      },
+      {
+        name: "Bootstrap",
+        icon: "BootstrapIcon"
       }
     ],
-    githubLink: "https://github.com/danielgil-dev/ecolink",
+    githubLink: "https://github.com/danielgil-dev/ecolink-backend-daniel",
     demoLink: ""
   },
   {
     title: "Portfolio Personal",
     image: Neo,
-    description: "Portfolio personal desarrollado con Astro y Tailwind CSS para mostrar mis proyectos y habilidades como desarrollador full-stack.",
+    description: "Portfolio personal desarrollado con un diseño minimalista y responsive, donde muestro mis proyectos, experiencia y habilidades de forma clara y profesional.",
     tags: [
       {
         name: "Astro",
@@ -41,7 +49,7 @@ export const projects = [
   {
      title: "Clarity",
     image: Clarity,
-    description: "Portfolio personal desarrollado con Astro y Tailwind CSS para mostrar mis proyectos y habilidades como desarrollador full-stack.",
+    description: "Clarity es una tienda online con un enfoque minimalista, donde desarrollé funcionalidades de gestión de usuarios, autenticación, carrito de compras y un panel de administración para productos.",
     tags: [
       {
         name: "Spring Boot",
