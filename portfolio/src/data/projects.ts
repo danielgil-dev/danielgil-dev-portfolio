@@ -2,6 +2,7 @@
 import Neo from "../assets/images/NeoAvatar.png";
 import Ecolink from "../assets/images/MookupEcolink.png"
 import Clarity from "../assets/images/MookupClarity.png"
+import PortfolioWeb from "../assets/images/HeroSection.png"
 
 export const projects = [
   {
@@ -31,7 +32,7 @@ export const projects = [
   },
   {
     title: "Portfolio Personal",
-    image: Neo,
+    image: PortfolioWeb,
     description: "Portfolio personal desarrollado con un diseño minimalista y responsive, donde muestro mis proyectos, experiencia y habilidades de forma clara y profesional.",
     tags: [
       {
