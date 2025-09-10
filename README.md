@@ -1,86 +1,47 @@
+# Astro Starter Kit: Minimal
 
-# 🚀 Portafolio Profesional con Astro y Tailwind CSS
-![Astro Badge](https://img.shields.io/badge/Astro-5.11.0-BC52EE?style=for-the-badge&logo=astro&logoColor=white)
-![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind_CSS-3.4.1-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![License Badge](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-![Hero Section](/danielgil-dev-portfolio/portfolio/src/assets/images/HeroSection.png)
+```sh
+npm create astro@latest -- --template minimal
+```
 
-## 🌟 Descripción
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
 
-Este proyecto es un portafolio web personal moderno, minimalista y totalmente responsivo desarrollado con Astro y Tailwind CSS. Diseñado para mostrar proyectos, habilidades y experiencia profesional de manera elegante y eficiente.
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-## ✨ Características
+## 🚀 Project Structure
 
-- ⚡ **Rendimiento Excepcional**: Construido con Astro para una carga ultrarrápida y un SEO optimizado
-- 🎨 **Diseño Elegante**: Interfaz moderna con Tailwind CSS para un diseño adaptable a cualquier dispositivo
-- 🌓 **Modo Oscuro**: Soporte completo para modo claro/oscuro
-- 📱 **Totalmente Responsivo**: Se adapta perfectamente a todos los tamaños de pantalla
-- 🧩 **Modular y Extensible**: Arquitectura de componentes fácil de personalizar
-- 📄 **Sección de CV**: Opción para descargar curriculum vitae
+Inside of your Astro project, you'll see the following folders and files:
 
-## 🛠️ Tecnologías
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
 
-- [Astro](https://astro.build/) - Framework web para sitios estáticos de alto rendimiento
-- [Tailwind CSS](https://tailwindcss.com/) - Framework CSS utilitario
-- [TypeScript](https://www.typescriptlang.org/) - Tipado estático para JavaScript
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-## 🚀 Instalación y uso
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-1. Clona este repositorio:
-   ```bash
-   git clone https://github.com/danielgil-dev/danielgil-dev-portfolio.git
-   cd danielgil-dev-portfolio/portfolio
-   ```
+Any static assets, like images, can be placed in the `public/` directory.
 
-2. Instala las dependencias:
-   ```bash
-   npm install
-   ```
+## 🧞 Commands
 
-3. Inicia el servidor de desarrollo:
-   ```bash
-   npm run dev
-   ```
+All commands are run from the root of the project, from a terminal:
 
-4. Construye el sitio para producción:
-   ```bash
-   npm run build
-   ```
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-5. Previsualiza la versión de producción:
-   ```bash
-   npm run preview
-   ```
+## 👀 Want to learn more?
 
-## 📝 Personalización
-
-Este portafolio está diseñado para ser fácilmente personalizable:
-
-1. Edita la información personal en los archivos de la carpeta `src/components/general/`
-2. Agrega tus proyectos modificando el archivo `src/data/projects.ts`
-3. Personaliza los íconos de tecnologías en la carpeta `src/assets/Icons/`
-4. Modifica los estilos globales en `src/styles/global.css`
-
-## 🆓 Uso libre y contribuciones
-
-Este proyecto es **totalmente gratuito** y está disponible bajo la licencia MIT. Siéntete libre de:
-
-- 🔄 **Forkear** el repositorio para crear tu propio portafolio
-- ✏️ **Personalizar** todos los aspectos para adaptarlo a tus necesidades
-- 🔧 **Mejorar** el código y enviar pull requests
-- 🌟 **Compartir** con otros desarrolladores que busquen un template de portafolio
-
-## 🤝 Contribuciones
-
-¡Las contribuciones son bienvenidas! Si tienes ideas para mejorar este portafolio:
-
-1. Haz fork del repositorio
-2. Crea una rama para tu característica (`git checkout -b feature/nueva-caracteristica`)
-3. Haz commit de tus cambios (`git commit -m 'Añadir nueva característica'`)
-4. Haz push a la rama (`git push origin feature/nueva-caracteristica`)
-5. Abre una Pull Request
-
-## 📜 Licencia
-
-Este proyecto está bajo la licencia MIT - consulta el archivo [LICENSE](LICENSE) para más detalles.
----
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
