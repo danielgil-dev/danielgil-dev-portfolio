@@ -12,7 +12,11 @@
   --color-accent-secondary: #0ea5e9; /* Sky-500 */
   --color-border: #e5e7eb;
 }
-
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 .dark {
   /* Paleta modo oscuro */
   --color-bg-primary: #0d0950; /* Tu azul oscuro actual */

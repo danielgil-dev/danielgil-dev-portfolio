@@ -1,4 +1,3 @@
-// src/data/projects.ts
 import Neo from "../assets/images/NeoAvatar.png";
 import Ecolink from "../assets/images/MookupEcolink.png"
 import Clarity from "../assets/images/MookupClarity.png"
@@ -33,7 +32,7 @@ export const projects = [
   {
     title: "Portfolio Personal",
     image: PortfolioWeb,
-    description: "Portfolio personal desarrollado con un diseño minimalista y responsive, donde muestro mis proyectos, experiencia y habilidades de forma clara y profesional.",
+    description: "Portfolio web profesional con diseño minimalista y enfoque en rendimiento. Incluye modo oscuro/claro, animaciones fluidas, contacto seguro con reCAPTCHA y una estructura modular responsive, optimizada para SEO y experiencia de usuario.",
     tags: [
       {
         name: "Astro",
@@ -45,7 +44,7 @@ export const projects = [
       }
     ],
     githubLink: "https://github.com/danielgil-dev/portfolio",
-    demoLink: "https://danielgil.dev"
+    demoLink: "https://danielgil-dev-portfolio.pages.dev/"
   },
   {
      title: "Clarity",

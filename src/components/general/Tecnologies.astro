@@ -23,88 +23,86 @@ import PowerBiIcon from "../../assets/Icons/PowerBiIcon.astro"
 
 const {id} = Astro.props;
 
-// Clase adaptativa para diferentes tamaños de pantalla
-const classList = "h-auto w-full max-w-[80px] sm:max-w-[100px] md:max-w-[120px] py-2 sm:py-3";
+// Configuración de tamaño responsivo para los iconos
+const iconClass = "h-16 w-16 sm:h-[70px] sm:w-[70px] md:h-20 md:w-20";
 
-// Array de tecnologías con categorías
 const technologies = [
   { 
     name: "Angular", 
-    icon: AngularIcon, 
-   
+    icon: AngularIcon 
   },
   { 
     name: "Spring Boot", 
-    icon: SpringBootIcon,  
+    icon: SpringBootIcon
   },
   { 
     name: "JavaScript", 
-    icon: JavaScripIcon, 
+    icon: JavaScripIcon
  
   },
   { 
     name: "Git", 
-    icon: GitIcon, 
+    icon: GitIcon
  
   },
   { 
     name: "Bootstrap", 
-    icon: BootstrapIcon, 
+    icon: BootstrapIcon
    
   },
   { 
     name: "MySQL", 
-    icon: MySqlIcon, 
+    icon: MySqlIcon
  
   },
   { 
     name: "Tailwind", 
-    icon: TailwindIcon, 
+    icon: TailwindIcon
    
   },
   { 
     name: "Swagger", 
-    icon: SwaggerIcon, 
+    icon: SwaggerIcon
    
   },
   { 
     name: "Postman", 
-    icon: PostmanIcon, 
+    icon: PostmanIcon
    
   },
   { 
     name: "Astro", 
-    icon: AstroIcon, 
+    icon: AstroIcon
    
   },
   { 
     name: "Docker", 
-    icon: DockerIcon, 
+    icon: DockerIcon
  
   },
   { 
     name: "Sass", 
-    icon: SassIcon, 
+    icon: SassIcon
  
   },
   { 
     name: "TypeScript", 
-    icon: TypeScriptIcon, 
+    icon: TypeScriptIcon
   
   },
   { 
     name: "Linux", 
-    icon: LinuxIcon, 
+    icon: LinuxIcon
  
   },
   { 
     name: "Node.js", 
-    icon: NodeIcon, 
+    icon: NodeIcon
    
   },
   { 
     name: "HTML5", 
-    icon: HtmlIcon, 
+    icon: HtmlIcon
  
   },
   {
@@ -133,15 +131,16 @@ const technologies = [
   </span>
 </h2>
 
-<!-- Cuadrícula responsiva: 2 columnas en móvil, 3 en tablet, 4 en desktop, 5 en pantallas grandes -->
-<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-5 md:gap-6 px-4 sm:px-6 md:px-8 mx-auto max-w-7xl mb-16">
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-5 md:gap-6 px-4 sm:px-6 md:px-8 mx-auto max-w-7xl">
   {technologies.map((tech, index) => (
     <div 
-      class="opacity-0 animate-fade-in flex flex-col items-center justify-center text-center p-4 sm:p-5 border border-gray-200 dark:border-gray-700 rounded-2xl sm:rounded-3xl bg-gray-100 dark:bg-gray-800/80 backdrop-blur-sm hover:shadow-lg hover:shadow-indigo-500/20 dark:hover:shadow-indigo-500/10 transition-all duration-500 hover:-translate-y-6 transform"
+      class="opacity-0 animate-fade-in flex flex-col items-center justify-between text-center p-4 m-1 sm:p-5 border border-gray-200 dark:border-gray-700 rounded-2xl sm:rounded-3xl bg-gray-100 dark:bg-gray-800/80 backdrop-blur-sm hover:shadow-lg hover:shadow-indigo-500/20 dark:hover:shadow-indigo-500/10 transition-all duration-500 hover:-translate-y-6 transform h-[160px] sm:h-[180px] md:h-[200px]"
       style={`animation-delay: ${index * 0.08}s`}
     >
-      <tech.icon class:list={classList} />
-      <p class="mt-2 sm:mt-3 text-sm sm:text-base font-medium text-gray-900 dark:text-white transition-colors">{tech.name}</p>
+      <div class="flex items-center justify-center w-full h-[70px] sm:h-[90px] md:h-24">
+        <tech.icon class={iconClass} />
+      </div>
+      <p class="mt-auto text-sm sm:text-base font-medium text-gray-900 dark:text-white transition-colors">{tech.name}</p>
     </div>
   ))}
 </div>

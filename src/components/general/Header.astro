@@ -6,11 +6,10 @@ import ThemeIcon from "./ThemeIcon.astro";
 <header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/90 backdrop-blur-sm border-b border-gray-800">
   <div class="container mx-auto px-4">
     <div class="flex items-center justify-between h-16">
-      <a href="/" class="group flex-shrink-0">
+      <a href="#" aria-label="Ir al inicio" class="group flex-shrink-0">
         <DevLogo darkMode={true} />
       </a>
       
-      <!-- Navegación desktop -->
       <nav class="hidden md:flex items-center space-x-6 lg:space-x-8">
         <a href="#perfil" class="text-gray-300 hover:text-white whitespace-nowrap transition-colors relative group">
           Sobre mí
@@ -37,7 +36,6 @@ import ThemeIcon from "./ThemeIcon.astro";
         </div>
       </nav>
       
-      <!-- Controles móviles -->
       <div class="flex items-center md:hidden">
         <div class="mr-2">
           <ThemeIcon />
@@ -47,11 +45,9 @@ import ThemeIcon from "./ThemeIcon.astro";
           id="mobile-menu-button"
           aria-label="Menú"
         >
-          <!-- Icono para abrir el menú (visible por defecto) -->
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="menu-open">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
-          <!-- Icono para cerrar el menú (oculto por defecto) -->
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="menu-close hidden">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -60,7 +56,6 @@ import ThemeIcon from "./ThemeIcon.astro";
     </div>
   </div>
 
-  <!-- Menú móvil -->
   <div 
     id="mobile-menu"
     class="md:hidden hidden fixed top-16 right-0 bottom-0 w-72 bg-white dark:bg-gray-900 border-l border-gray-200 dark:border-indigo-900 shadow-xl z-20 transform translate-x-full transition-transform backdrop-blur-lg"
@@ -95,75 +90,57 @@ import ThemeIcon from "./ThemeIcon.astro";
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Elementos DOM
     const menuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const menuOpenIcon = menuButton?.querySelector('.menu-open');
     const menuCloseIcon = menuButton?.querySelector('.menu-close');
     const allLinks = document.querySelectorAll('a[href^="#"]');
     
-    // Función para toggle del menú móvil
     menuButton?.addEventListener('click', () => {
-      // Alternar visibilidad del menú
       mobileMenu?.classList.toggle('hidden');
       mobileMenu?.classList.toggle('translate-x-full');
       
-      // Alternar iconos
       menuOpenIcon?.classList.toggle('hidden');
       menuCloseIcon?.classList.toggle('hidden');
       
-      // Añadir/quitar overlay
       if (!mobileMenu?.classList.contains('hidden')) {
-        // Si el menú está visible, añadir overlay
         const overlay = document.createElement('div');
         overlay.id = 'menu-overlay';
         overlay.className = 'fixed inset-0 bg-black/25 dark:bg-black/40 backdrop-blur-sm z-10 md:hidden';
         document.body.appendChild(overlay);
         
-        // Bloquear scroll
         document.body.classList.add('overflow-hidden');
         
-        // Añadir evento click al overlay para cerrar el menú
         overlay.addEventListener('click', () => {
           menuButton?.click();
         });
       } else {
-        // Si el menú está oculto, quitar overlay
         const overlay = document.getElementById('menu-overlay');
         overlay?.remove();
         
-        // Desbloquear scroll
         document.body.classList.remove('overflow-hidden');
       }
     });
     
-    // Cerrar menú móvil al hacer clic en un enlace
     document.querySelectorAll('#mobile-menu a').forEach(link => {
       link.addEventListener('click', () => {
-        // Ocultar el menú
         mobileMenu?.classList.add('hidden', 'translate-x-full');
         
-        // Cambiar iconos
         menuOpenIcon?.classList.remove('hidden');
         menuCloseIcon?.classList.add('hidden');
         
-        // Eliminar overlay
         document.getElementById('menu-overlay')?.remove();
         
-        // Desbloquear scroll
         document.body.classList.remove('overflow-hidden');
       });
     });
     
-    // Función para activar el indicador en el elemento de navegación móvil
     function activateMobileNavItem(targetId) {
-      // Desactivar todos los indicadores de navegación móvil
       document.querySelectorAll('.nav-indicator-mobile').forEach(ind => {
         ind.classList.add('opacity-0', 'scale-y-0');
         ind.classList.remove('opacity-100', 'scale-y-100');
       });
       
-      // Activar el indicador correspondiente
       const mobileLink = document.querySelector(`.mobile-nav-item[href="${targetId}"]`);
       if (mobileLink) {
         const mobileIndicator = mobileLink.querySelector('.nav-indicator-mobile');
@@ -172,7 +149,6 @@ import ThemeIcon from "./ThemeIcon.astro";
       }
     }
 
-    // Scroll suave para todos los enlaces
     allLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -186,7 +162,6 @@ import ThemeIcon from "./ThemeIcon.astro";
             behavior: 'smooth'
           });
           
-          // Activar indicador del enlace desktop seleccionado
           document.querySelectorAll('.nav-indicator').forEach(indicator => {
             indicator.classList.add('w-0');
             indicator.classList.remove('w-6');
@@ -198,13 +173,11 @@ import ThemeIcon from "./ThemeIcon.astro";
             indicator.classList.add('w-6');
           }
           
-          // Activar indicador del enlace móvil seleccionado
           activateMobileNavItem(targetId);
         }
       });
     });
     
-    // Detectar sección activa durante el scroll
     const observerOptions = {
       root: null,
       rootMargin: '-70px 0px -30% 0px',
@@ -218,7 +191,6 @@ import ThemeIcon from "./ThemeIcon.astro";
           if (id) {
             const targetId = `#${id}`;
             
-            // Actualizar navegación desktop
             document.querySelectorAll('nav a').forEach(link => {
               const href = link.getAttribute('href');
               const indicator = link.querySelector('.nav-indicator');
@@ -232,14 +204,12 @@ import ThemeIcon from "./ThemeIcon.astro";
               }
             });
             
-            // Actualizar navegación móvil
             activateMobileNavItem(targetId);
           }
         }
       });
     }, observerOptions);
     
-    // Observar todas las secciones
     document.querySelectorAll('section[id]').forEach(section => {
       observer.observe(section);
     });
