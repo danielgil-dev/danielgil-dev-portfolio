@@ -36,7 +36,7 @@ interface Props {
 const { image, title, description, demoLink, githubLink, tags } = Astro.props;
 ---
 
-<div class="max-w-md bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 hover:shadow-xl transition-all duration-300 group">
+<div class="max-w-md m-2 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 hover:shadow-xl transition-all duration-300 group">
   <div class="overflow-hidden rounded-t-lg h-48 relative">
     <img class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src={image.src} alt={title} />
     <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

@@ -7,8 +7,6 @@ export default {
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         mono: ['Fira Code', 'ui-monospace', 'SFMono-Regular', 'monospace'],
-        title: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        body: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
         tighter: '-0.05em',
@@ -16,14 +14,14 @@ export default {
       },
       keyframes: {
         'fade-in': {
-          '0%': { opacity: '0', transform: 'translateY(40px)' },
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' }
         }
       },
       animation: {
-        'fade-in': 'fade-in 0.9s ease-in-out forwards',
-        'fade-in-delayed': 'fade-in 0.8s ease-in-out 0.2s forwards',
-        'fade-in-delayed-more': 'fade-in 0.8s ease-in-out 0.4s forwards'
+        'fade-in': 'fade-in 0.6s ease-in-out forwards',
+        'fade-in-delayed': 'fade-in 0.6s ease-in-out 0.1s forwards',
+        'fade-in-delayed-more': 'fade-in 0.6s ease-in-out 0.2s forwards'
       }
     },
   },
