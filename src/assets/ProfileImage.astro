@@ -2,6 +2,13 @@
 import { Image } from 'astro:assets';
 import Avatar from "../assets/images/FotoPerfilDaniel.jpeg"
 ---
-<Image class="  w-[15rem] rounded-1xl md:w-[18rem] lg:w-[20rem]" src={Avatar} alt="Foto perfil" 
+<Image 
+  class="w-full h-full object-cover rounded-1xl" 
+  src={Avatar} 
+  alt="Foto perfil" 
   decoding="async"
-  loading="lazy">
+  width={400}
+  height={400}
+  fetchpriority="high"
+  loading="eager"
+/>

@@ -7,6 +7,7 @@
     </span>
   </h2>
 
+
   <div class="max-w-6xl mx-auto">
     <div class="md:hidden mb-6 px-4 py-6 bg-gradient-to-r from-indigo-50/80 to-transparent dark:from-indigo-900/20 dark:to-transparent rounded-lg">
       <div class="flex flex-col sm:flex-row items-center gap-4">
@@ -34,7 +35,7 @@
       
       <form 
         id="contact-form"
-        action= {`https://formspree.io/f/${import.meta.env.FORMSPREE_FORM_ID}`}
+        action= {`https://formspree.io/f/${import.meta.env.PUBLIC_FORMSPREE_FORM_ID}`}
         method="POST" 
         class="p-8 bg-white/95 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-gray-700/50 shadow-lg transition-all duration-300 md:col-start-2"
       >    
@@ -76,129 +77,127 @@
       </div>
     </div>
     
-    <div id="form-status" class="min-h-6 mt-4 text-sm"></div>
     <div class="mt-6">
       <button 
         type="submit" 
         id="submit-button"
-        class=" w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-600 text-white font-medium rounded-md transition-colors shadow-md flex items-center justify-center gap-2"
+        class=" w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-600 text-white font-medium rounded-md transition-colors shadow-md"
         >
-        
-        <span>Enviar</span>
-        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-        </svg>
+        Enviar
       </button>
     </div>
- 
-
-<div class="flex justify-center mt-4">
-  <div class="g-recaptcha" 
-       data-sitekey={import.meta.env.SITE_KEY}
-       data-size="normal" 
-       data-theme="light"></div>
-</div>
+    <div id="form-status" class="min-h-6 mt-4 text-sm text-center"></div>
+    <div class="flex justify-center mt-4 overflow-hidden w-full">
+      <div class="transform scale-[0.78] sm:scale-[0.9] md:scale-100 origin-center">
+        <div 
+          class="g-recaptcha" 
+          data-sitekey={import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY}
+          data-size="normal" 
+          data-theme="light"
+          data-callback="recaptchaCallback"></div>
+      </div>
+    </div>
     <p class="md:hidden text-center text-gray-500 dark:text-gray-400 text-sm text-wrap mt-4 italic  border-t border-gray-200 dark:border-gray-700 pt-4 opacity-0 animate-fade-in-delayed-more motion-reduce:animate-none">
       Me pondré en contacto contigo lo antes posible.
     </p>
   </form>
   </div>
 </div>
-<style>
-  #g-recaptcha-response {
-    display: block !important;
-    position: absolute;
-    margin: -50px 0 0 0 !important;
-    z-index: -999999;
-    opacity: 0;
-  }
-</style>
-<script>
-  const reCAPTCHA = document.querySelector('.g-recaptcha');
-  const form = document.getElementById('contact-form');
-  const formStatus = document.getElementById('form-status');
+
+
+<script is:inline>
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("form-status");
   const submitButton = document.getElementById('submit-button');
-  
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      // Cambiar estado del botón
-      submitButton.disabled = true;
-      const originalButtonHtml = submitButton.innerHTML;
-      submitButton.innerHTML = `
-        <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-        </svg>
-      `;
-      
-      try {
-        const formData = new FormData(form);
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: formData,
-          headers: {'Accept': 'application/json'}
-        });
+  let captchaOK = false;
+
+  window.recaptchaCallback = function () {
+    captchaOK = true;
+    submitButton.disabled = false;
+    submitButton.classList.remove('cursor-not-allowed', 'bg-indigo-400');
+    submitButton.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
+    
+    if (status.textContent.includes('captcha')) {
+      status.textContent = '';
+      status.classList.remove('text-red-500');
+    }
+  };
+
+  window.recaptchaExpired = function () {
+    captchaOK = false;
+    submitButton.disabled = true;
+    submitButton.classList.add('cursor-not-allowed');
+    submitButton.classList.remove('hover:bg-indigo-700');
+  };
+
+  window.recaptchaError = function () {
+    captchaOK = false;
+    submitButton.disabled = true;
+    status.classList.add("text-red-500");
+    status.textContent = "Error con el captcha. Recarga la página.";
+  };
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    status.textContent = "";
+    status.classList.remove("text-green-500", "text-red-500");
+
+    if (!captchaOK) {
+      status.classList.add("text-red-500");
+      status.textContent = "Completa el captcha para continuar.";
+      return;
+    }
+
+    const token = grecaptcha.getResponse();
+    if (!token) {
+      status.classList.add("text-red-500");
+      status.textContent = "Error con el captcha. Recarga la página.";
+      return;
+    }
+
+    submitButton.disabled = true;
+    const originalLabel = submitButton.textContent;
+    submitButton.textContent = "Enviando...";
+
+    try {
+      const data = new FormData(form);
+      data.set('g-recaptcha-response', token);
+
+      const resp = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      const payload = await resp.json().catch(() => ({}));
+
+      if (resp.ok) {
+        status.classList.add("text-green-500");
+        status.textContent = "¡Mensaje enviado!";
+        form.reset();
+        grecaptcha.reset();
+        captchaOK = false;
+        submitButton.textContent = "¡Enviado!";
         
-        const data = await response.json();
-        
-        if (response.ok) {
-          // Gestión de éxito
-          formStatus.innerHTML = "";
-          form.reset();
-          
-          form.classList.add('ring-2', 'ring-green-500/50');
-          
-          submitButton.innerHTML = `
-            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-          `;
-          submitButton.classList.add('bg-green-600');
-          submitButton.classList.remove('bg-indigo-600', 'hover:bg-indigo-700', 'dark:bg-indigo-700', 'dark:hover:bg-indigo-600');
-          setTimeout(() => {
-            form.classList.remove('ring-2', 'ring-green-500/50');
-            // Reiniciar reCAPTCHA
-            if (typeof grecaptcha !== 'undefined') {
-              grecaptcha.reset();
-            }
-            submitButton.disabled = false;
-            submitButton.innerHTML = originalButtonHtml;
-            submitButton.classList.remove('bg-green-600');
-            submitButton.classList.add('bg-indigo-600', 'hover:bg-indigo-700', 'dark:bg-indigo-700', 'dark:hover:bg-indigo-600');
-          }, 3000);
-          
-        } else {
-          // Error desde Formspree
-          formStatus.innerHTML = `
-            <div class="p-2 text-sm text-red-400 rounded-md" role="alert">
-              ${data.error || 'Error al enviar. Inténtalo de nuevo.'}
-            </div>
-          `;
-          submitButton.disabled = false;
-          submitButton.innerHTML = originalButtonHtml;
-          
-          // Reiniciar reCAPTCHA
-          if (typeof grecaptcha !== 'undefined') {
-            grecaptcha.reset();
-          }
-        }
-      } catch (error) {
-        // Error de red o JavaScript
-        formStatus.innerHTML = `
-          <div class="p-2 text-sm text-red-400 rounded-md" role="alert">
-            Error de conexión. Verifica tu conexión a internet.
-          </div>
-        `;
+        setTimeout(() => {
+          submitButton.textContent = originalLabel;
+          submitButton.disabled = true;
+          submitButton.classList.add('cursor-not-allowed');
+          status.textContent = "";
+        }, 2000);
+      } else {
         submitButton.disabled = false;
-        submitButton.innerHTML = originalButtonHtml;
-        
-        // Reiniciar reCAPTCHA
-        if (typeof grecaptcha !== 'undefined') {
-          grecaptcha.reset();
-        }
+        submitButton.textContent = originalLabel;
+        status.classList.add("text-red-500");
+        status.textContent = payload?.errors?.map(e => e.message || e).join(", ") || "Error al enviar. Intenta de nuevo.";
       }
-    });
+    } catch (e) {
+      submitButton.disabled = false;
+      submitButton.textContent = "Enviar";
+      status.classList.add("text-red-500");
+      status.textContent = "Error de conexión. Intenta de nuevo.";
+    }
   }
+
+  form.addEventListener("submit", handleSubmit);
 </script>

@@ -18,17 +18,35 @@ const {
 } = Astro.props;
 ---
 
+<!-- Script inline para aplicar el tema antes del primer render -->
+<script is:inline>
+
+  const theme = localStorage?.getItem("theme") || 
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  
+  if (theme === 'dark') {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+  
+  localStorage.setItem('theme', theme);
+  window.themeInitialized = true;
+  
+</script>
+
 <html lang="es" class="scroll-smooth overflow-x-hidden min-w-[320px]">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/jpeg" href="/FotoPerfilDaniel.jpeg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content={description} />
+    <meta name="color-scheme" content="light dark">
     <title>{title}</title>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap&text=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,;:!?()[]{}_-" rel="stylesheet">
   </head>
 
   <body class="flex flex-col min-h-screen w-full min-w-[320px] max-w-full overflow-x-hidden break-words dark:bg-[#000000] dark:bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[#f5f7ff] bg-[radial-gradient(#3b82f680_1px,#f8fafc_1px)] bg-[size:20px_20px] transition-colors duration-300">

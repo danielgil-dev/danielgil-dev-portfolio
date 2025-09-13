@@ -43,7 +43,7 @@ export const projects = [
         icon: "TailwindIcon"
       }
     ],
-    githubLink: "https://github.com/danielgil-dev/portfolio",
+    githubLink: "https://github.com/danielgil-dev/danielgil-dev-portfolio",
     demoLink: "https://danielgil-dev-portfolio.pages.dev/"
   },
   {
