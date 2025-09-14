@@ -107,7 +107,7 @@ Este proyecto está bajo la Licencia MIT - consulta el archivo LICENSE para más
 
 ## 🌎 Demo
 
-Visita la versión desplegada de este portfolio: **[danielgil.dev](https://danielgil-dev-portfolio.pages.dev/)**
+Visita la versión desplegada de este portfolio: **[danielgil.dev](https://danielgil.netlify.app/)**
 
 ---
 
