@@ -44,7 +44,7 @@ export const projects = [
       }
     ],
     githubLink: "https://github.com/danielgil-dev/danielgil-dev-portfolio",
-    demoLink: "https://danielgil-dev-portfolio.pages.dev/"
+    demoLink: "https://danielgil.netlify.app/"
   },
   {
      title: "Clarity",
